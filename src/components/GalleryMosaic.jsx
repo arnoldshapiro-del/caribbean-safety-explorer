@@ -1,4 +1,5 @@
 import { hexToRgb } from "../utils";
+import ZoomableImage from "./ZoomableImage";
 
 export default function GalleryMosaic({ gallery, color }) {
   return (
@@ -14,7 +15,7 @@ export default function GalleryMosaic({ gallery, color }) {
             const cap = e.currentTarget.querySelector('.cap'); if (cap) cap.style.transform = 'translateY(100%)';
           }}>
           <div className="gal-inner" style={{ width: '100%', height: '100%', transition: 'transform 0.6s ease' }}>
-            <img src={g.src} alt={g.cap} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <ZoomableImage src={g.src} alt={g.cap} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,transparent 50%, rgba(0,0,0,0.7))', pointerEvents: 'none' }} />
           <div className="cap" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '12px 14px', transform: 'translateY(100%)', transition: 'transform 0.3s ease', fontFamily: "'Oxanium',sans-serif", fontSize: 11, color: 'white', fontWeight: 600, letterSpacing: '0.02em', background: `linear-gradient(180deg, transparent, rgba(${hexToRgb(color)},0.55))` }}>{g.cap}</div>

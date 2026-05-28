@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { hexToRgb } from "../utils";
+import ZoomableImage from "./ZoomableImage";
 import ScoreRing from "./ScoreRing";
 import SectionLabel from "./SectionLabel";
 import GalleryMosaic from "./GalleryMosaic";
@@ -24,12 +25,12 @@ export default function DestSection({ dest, onVisible }) {
       <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
           <div style={{ width: '100%', height: '100%', transition: 'transform 1.4s ease', transform: animate ? 'scale(1.06)' : 'scale(1)' }}>
-            <img src={dest.hero} alt={dest.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <ZoomableImage src={dest.hero} alt={`${dest.name} — ${dest.tagline}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
-          <div style={{ position: 'absolute', inset: 0, background: 'rgba(3,11,23,0.5)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(3,11,23,0.5)', pointerEvents: 'none' }} />
         </div>
-        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(128deg,rgba(${hexToRgb(dest.color)},0.55) 0%,rgba(3,11,23,0.95) 58%)` }} />
-        <div style={{ position: 'relative', zIndex: 1, width: '100%', padding: '70px 50px' }}>
+        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(128deg,rgba(${hexToRgb(dest.color)},0.55) 0%,rgba(3,11,23,0.95) 58%)`, pointerEvents: 'none' }} />
+        <div style={{ position: 'relative', zIndex: 1, width: '100%', padding: '70px 50px', pointerEvents: 'none' }}>
           <div style={{ marginBottom: 24 }}>
             <span style={{ fontFamily: "'Space Mono',monospace", fontSize: 9, letterSpacing: '0.3em', color: dest.color, background: `rgba(${hexToRgb(dest.color)},0.12)`, border: `1px solid rgba(${hexToRgb(dest.color)},0.4)`, padding: '6px 18px', borderRadius: 100, textTransform: 'uppercase' }}>{dest.badge}</span>
           </div>
@@ -45,7 +46,7 @@ export default function DestSection({ dest, onVisible }) {
               <ScoreRing score={dest.score} color={dest.color} size={180} animate={animate} />
               <div style={{ fontFamily: "'Space Mono',monospace", fontSize: 9, color: 'rgba(255,255,255,0.28)', letterSpacing: '0.2em', textAlign: 'center', textTransform: 'uppercase', lineHeight: 1.7 }}>Traveler<br />Safety Index</div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, pointerEvents: 'auto' }}>
               {dest.highlights.map((h, i) => (<HighCard key={i} {...h} color={dest.color} />))}
             </div>
           </div>
