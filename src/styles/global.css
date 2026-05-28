@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: #030B17;
+  font-family: 'Oxanium', system-ui, sans-serif;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #030B17; }
+::-webkit-scrollbar-thumb { background: rgba(0,196,240,0.28); border-radius: 2px; }
+button { outline: none; font-family: inherit; }
+img { display: block; }
